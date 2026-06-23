@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ectf.core">
+
+    <uses-sdk
+        android:targetSdkVersion="33" />
+
+    <uses-permission android:name="android.permission.BIND_DEVICE_ADMIN" />
+
+    <application>
+        <receiver
+            android:name=".SecurityReceiver"
+            android:permission="android.permission.BIND_DEVICE_ADMIN"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_policies" />
+        </receiver>
+    </application>
+</manifest>
